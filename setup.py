@@ -4,7 +4,6 @@ Also download necessaray examples and input.
 
 import argparse
 import datetime
-import os
 import pathlib
 import sys
 import time
@@ -22,20 +21,25 @@ CODE_PLACEHOLDER = '''"""{title} ({url})
 Code for solving part {part_word}.
 """
 
+import pathlib
 
-def main(path: str) -> None:
-    """Implement here.
+
+def solve(path: str) -> str:
+    """Solve puzzle {day:02}-{part}.
 
     Arguments:
         - path: path to input.
+
+    Returns:
+        The solution.
     """
-    with open(path, "r", encoding="utf-8") as file:
-        text = file.read()
+    text = pathlib.Path(path).read_text(encoding="utf-8")
+    return text
 
 
 if __name__ == "__main__":
-    print("example:", main("{day:02}/example{day:02}_{part}.txt"))
-    print("input:", main("{day:02}/input{day:02}.txt"))
+    print("example:", solve("{day:02}/example{day:02}_{part}.txt"))
+    print("input:", solve("{day:02}/input{day:02}.txt"))
 '''
 
 # setup arg parser
