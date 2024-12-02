@@ -119,7 +119,7 @@ def main(day: int, year: int, part: int, wait: bool, notify: bool, ntfy_url: str
     pathlib.Path(f"{day:02}/puzzle{day:02}_{part}.py").write_text(
         data=CODE_PLACEHOLDER.format_map(format_values), encoding="utf-8")
     pathlib.Path(f"{day:02}/example{day:02}_{part}.txt").write_text(
-        data=examples[part - 1], encoding="utf-8")
+        data=examples[part - 1 if len(examples) != 1 else 0], encoding="utf-8")
     pathlib.Path(f"{day:02}/input{day:02}.txt").write_text(
         data=input_text, encoding="utf-8")
 
