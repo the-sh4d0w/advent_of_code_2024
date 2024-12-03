@@ -99,8 +99,8 @@ def main(day: int, year: int, part: int, wait: bool, notify: bool, ntfy_url: str
         soup = bs4.BeautifulSoup(response.text, "html.parser")
         title = typing.cast(bs4.Tag, soup.find("h2")
                             ).text.replace("-", "").strip()
-        examples = [typing.cast(bs4.Tag, code).text.strip()
-                    for code in soup.find_all("code") if "\n" in code.text]
+        examples = [typing.cast(bs4.Tag, typing.cast(bs4.Tag, pre).find("code")).text.strip()
+                    for pre in soup.find_all("pre")]
         input_text = sess.get(f"{url}/input").text.strip()
 
     # exit with error if part two not available
